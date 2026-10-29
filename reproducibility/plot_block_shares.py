@@ -19,8 +19,8 @@ from matplotlib.patches import Patch
 
 HERE = Path(__file__).resolve().parent
 BLOCK_ORDER = ["E4", "E5", "B", "D5", "D4"]
-COLORS = {"E4": "#E68635", "D4": "#E68635", "E5": "#B8C2CC", "D5": "#B8C2CC", "B": "#3B78B4"}
-LABEL_INK = {"E4": "#1F2328", "D4": "#1F2328", "E5": "#1F2328", "D5": "#1F2328", "B": "white"}
+COLORS = {"E4": "#F59449", "D4": "#F59449", "E5": "#B8C2CC", "D5": "#B8C2CC", "B": "#6591C0"}
+LABEL_INK = {"E4": "#1F2328", "D4": "#1F2328", "E5": "#1F2328", "D5": "#1F2328", "B": "#1F2328"}
 ROW_LABELS = {
     "Shared LR 0.01": "Shared, 0.01",
     "Uniform LR 0.005": "Uniform, 0.005",
