@@ -13,6 +13,7 @@ of commands and source files.
 | `preprocess.py` | Read-only dataset validation and opt-in nnU-Net preprocessing |
 | `run_experiment.py` | Dry-run-by-default training and evaluation runner (`--question`, `--group`, or one experiment) |
 | `summarize_questions.py` | Rebuilds the Q1–Q3 tables from checkpoints and evaluations |
+| `plot_block_shares.py` | Plots per-block displacement shares for the Q3 settings |
 | `checkpoint_displacement.py` | Aggregate and per-block checkpoint movement |
 | `bootstrap_metrics.py` | Paired old-task and new-task case-bootstrap intervals |
 | `block_ablation.py` | Dry-run-by-default full encoder/decoder activation ablation |
