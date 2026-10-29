@@ -1,181 +1,149 @@
-# Where and How to Adapt
+# What to Preserve, Where to Adapt
 
-[![CI](https://github.com/AmalSaqib/What-to-Preserve-How-to-Adapt/actions/workflows/ci.yml/badge.svg)](https://github.com/AmalSaqib/What-to-Preserve-How-to-Adapt/actions/workflows/ci.yml)
+[![CI](https://github.com/AmalSaqib/What-to-Preserve-Where-to-Adapt/actions/workflows/ci.yml/badge.svg)](https://github.com/AmalSaqib/What-to-Preserve-Where-to-Adapt/actions/workflows/ci.yml)
 
-Research code for studying depth-constrained and scale-aware adaptation in
-continual 3D medical image segmentation. The implementation extends
-[Lifelong nnU-Net](https://github.com/MECLabTUDA/Lifelong-nnUNet) and nnU-Net
-v1 with:
+Code for our study of catastrophic forgetting in continual gynecological image
+segmentation. A 3D nnU-Net is first trained on uterine MRI (UMD) and then
+adapted to tumor segmentation in PET/CT (ECPC-IDS), while different parts of
+the encoder–decoder backbone are allowed to change. The study answers three
+questions:
 
-- explicit encoder, bottleneck, and decoder freezing policies;
-- static block-specific learning rates calibrated from initial relative
-  gradient norms;
-- a machine-readable registry for every paper training configuration;
-- reproducible preprocessing, evaluation, displacement, bootstrap, and
-  activation-ablation utilities.
+| | Question | Short answer |
+|---|---|---|
+| **Q1** | **Adaptation depth.** What happens as more of the network becomes trainable? | Adapting near the bottleneck preserves the previous task; forgetting rises sharply once the trainable region reaches the E4/D4 blocks, even at approximately matched average parameter movement. |
+| **Q2** | **Learning-rate allocation.** Can scale-aware block-specific rates reduce forgetting at a given depth? | Yes, while part of the backbone stays frozen: over three seeds, forgetting drops from 0.363 to 0.045 at R4 and from 0.624 to 0.199 at R3, for about one Dice point. |
+| **Q3** | **Smaller learning rate.** Is the benefit explained by simply using a smaller learning rate? | Not entirely: at similar average movement, a uniformly reduced rate forgets about four times more than scale-aware rates, because it concentrates movement in the outer blocks instead of the bottleneck. |
+
+The implementation extends [Lifelong nnU-Net](https://github.com/MECLabTUDA/Lifelong-nnUNet)
+(nnU-Net v1) with explicit encoder/bottleneck/decoder freezing, static
+block-specific learning rates calibrated from initial relative gradient norms,
+and a registry that defines every experiment in the paper.
 
 The repository contains **no medical images, patient identifiers, model
 checkpoints, or per-patient predictions**.
 
-## Repository status
+## Notation
 
-This is research software built on the Lifelong nnU-Net codebase. The
-paper-facing interface lives in [`reproducibility/`](reproducibility/); use it
-instead of constructing long trainer commands manually. Expensive operations
-are dry runs unless `--execute` is supplied.
+The backbone has encoder blocks `E0`–`E5`, a bottleneck `B`, and decoder blocks
+`D5`–`D0` (`E0`/`D0` are closest to the input/output). Nested trainable regions
+grow outward from the bottleneck:
 
-## Quick start
+```text
+B,   R5 = {E5, B, D5},   R4 = {E4..E5, B, D5..D4},   ...,   R0 = full backbone
+```
 
-The recorded experiments use Python 3.9 and nnU-Net v1. GPU/CUDA installation
-is platform-specific; install the matching PyTorch build before or while
-creating the environment.
+During Task-2 adaptation only the selected blocks and the new task's head are
+trained; everything else, including the Task-1 head, stays frozen.
+
+## Setup
+
+The recorded experiments use Python 3.9, nnU-Net v1, and one NVIDIA Quadro RTX
+6000 (24 GB). Install the PyTorch build that matches your CUDA version, then:
 
 ```bash
 conda env create -f environment.yml
 conda activate depth-aware-cl
+source reproducibility/config.example.env   # set PAPER_DATA_ROOT first to use existing data
 ```
 
-Configure local storage. The default places generated artifacts in the ignored
-`data/` directory inside the clone:
+Data are the public UMD, ECPC-IDS, and UT-EndoMRI datasets, converted to the
+nnU-Net v1 raw-data layout with two input channels (see
+[`docs/DATA.md`](docs/DATA.md)). Validate, then preprocess:
 
 ```bash
-source reproducibility/config.example.env
+python reproducibility/preprocess.py            # read-only check
+python reproducibility/preprocess.py --execute  # nnU-Net planning and preprocessing
 ```
 
-Validate nnU-Net-formatted raw data without changing it:
+All controlled runs start from the same UMD checkpoint, given by
+`PAPER_INIT_CHECKPOINT`; its held-out UMD evaluation (`PAPER_BASELINE_UMD_EVAL`)
+is the reference for forgetting. Both are set in
+[`reproducibility/config.example.env`](reproducibility/config.example.env).
+
+## Reproducing the three questions
+
+Every configuration is defined once in
+[`reproducibility/experiments.json`](reproducibility/experiments.json). Its
+`questions` section lists which runs make up each table row. The runner prints
+commands without executing them unless `--execute` is given:
 
 ```bash
-python reproducibility/preprocess.py
+python reproducibility/run_experiment.py --question Q1             # inspect commands
+python reproducibility/run_experiment.py --question Q1 --execute   # train + evaluate, one run at a time
 ```
 
-Inspect the registered experiments and render one command:
+| Question | Table | Runs | Seeds |
+|---|---|---|---|
+| Q1 | `progressive` | head only, B, R5 … R1, R0 (shared LR 0.01) | 12345 |
+| Q1 | `matched_rms` | B and R4 at LR 0.01, R1 at LR 0.008 (approximately equal final RMS) | 3 |
+| Q1 | `mri_to_mri` | B, R4, R1 for UMD → UT-EndoMRI | 12345 |
+| Q2 | `shared_vs_scale_aware` | R5, R4, R3, R0 with shared and scale-aware rates | 3 |
+| Q3 | `uniform_lr_control` | R4 with shared LR 0.01, uniform 0.005 and 0.0025, and scale-aware rates | 12345 |
+
+Runs shared between questions are trained once. The three adaptation seeds are
+12345, 23456, and 34567; the data split and the initial checkpoint are fixed.
+
+After the runs finish, rebuild the tables:
 
 ```bash
-python reproducibility/run_experiment.py --list
-python reproducibility/run_experiment.py ecpc_middle_gradient_normalized
+python reproducibility/summarize_questions.py                  # all questions
+python reproducibility/summarize_questions.py --question Q3    # one question
 ```
 
-After checking the rendered command, train and evaluate:
+For every row the script reports UMD forgetting, current-task Dice, RMS
+parameter displacement, and the share of squared displacement in the
+outermost trainable encoder–decoder pair and in the bottleneck, as per-seed
+values and mean ± sample SD. It writes CSV files to `outputs/questions/`.
 
-```bash
-python reproducibility/run_experiment.py ecpc_middle_gradient_normalized \
-  --stage train --execute
-python reproducibility/run_experiment.py ecpc_middle_gradient_normalized \
-  --stage evaluate --execute
-```
+The values reported in the paper are included as aggregate, patient-anonymous
+reference files in [`reproducibility/reported/`](reproducibility/reported/).
 
-## Data preparation
-
-Reproduction starts from de-identified, nnU-Net-formatted NIfTI datasets. The
-institution-specific export, conversion, and de-identification code is not
-available and is not implied to be part of this release.
-
-```text
-data/nnUNet_raw_base/nnUNet_raw_data/TaskXXX_Name/
-├── dataset.json
-├── imagesTr/CASE_0000.nii.gz
-├── imagesTr/CASE_0001.nii.gz
-├── labelsTr/CASE.nii.gz
-├── imagesTs/CASE_0000.nii.gz
-└── labelsTs/CASE.nii.gz
-```
-
-The paper uses two input channels. ECPC-IDS uses PET and CT. For the
-single-modality MRI tasks, the supplied nnU-Net representation must use the
-same two-channel convention as the checkpoints. See [data documentation](docs/DATA.md).
-
-To validate and then run standard nnU-Net planning/preprocessing:
-
-```bash
-python reproducibility/preprocess.py
-python reproducibility/preprocess.py --execute
-```
-
-## Experiments
-
-[`reproducibility/experiments.json`](reproducibility/experiments.json) is the
-single source of truth for task order, trainable blocks, plans, learning rates,
-seeds, and baseline hyperparameters.
+## Other experiments in the registry
 
 | Group | Contents |
 |---|---|
 | `single_task` | Independent UMD, ECPC-IDS, and UT-EndoMRI models |
-| `fixed_lr_depth` | Frozen, bottleneck, progressive nested regions, and outer-block diagnostic |
-| `scale_control` | Gradient-normalized extents and approximate RMS-targeted broad run |
-| `cross_transition` | UMD to UT-EndoMRI bottleneck/middle/broad replication |
-| `seed_replicates` | Additional fixed-LR adaptation seeds |
+| `fixed_lr_depth` | Frozen, bottleneck, nested regions, and an `E0/D0`-only diagnostic |
+| `scale_control` | Scale-aware runs and the RMS-targeted broad run |
+| `seed_replicates` | Additional shared-LR seeds |
+| `uniform_lr_control` | Uniformly reduced learning rates for R4 |
+| `cross_transition` | UMD → UT-EndoMRI |
 | `continual_baselines` | Sequential, rehearsal, LwF, and EWC |
 
-Render a complete group without starting it:
-
 ```bash
-python reproducibility/run_experiment.py --group scale_control
+python reproducibility/run_experiment.py --list
+python reproducibility/run_experiment.py --group continual_baselines
 ```
 
 The joint MultiTalent baseline uses a separate nnU-Net v2 environment; see
-[`reproducibility/MULTITALENT.md`](reproducibility/MULTITALENT.md).
+[`reproducibility/MULTITALENT.md`](reproducibility/MULTITALENT.md). Further
+analysis utilities (single-checkpoint displacement, case-bootstrap intervals,
+and inference-time block ablation) are described in
+[`reproducibility/README.md`](reproducibility/README.md).
 
-## Analysis
+## Scope and limitations
 
-Measure aggregate and per-block displacement between trusted checkpoints:
+- One architecture family (3D nnU-Net) and a fixed task order with UMD first.
+- Encoder and decoder blocks at the same resolution are always trained
+  together, so conclusions concern resolution stages, not encoder versus
+  decoder sides.
+- Scale-aware calibration changes both the overall size and the depth-wise
+  distribution of updates; Q3 tests the size component directly at R4.
+- RMS matching is assessed at the final checkpoint and is not enforced during
+  training.
+- Seed standard deviations measure training variability; case-bootstrap
+  intervals measure evaluation-cohort uncertainty. The two are not
+  interchangeable.
+- The UT-EndoMRI input sequence was chosen in an exploratory comparison that
+  included the held-out cases, so that transition is supporting evidence only.
 
-```bash
-python reproducibility/checkpoint_displacement.py \
-  --initial /path/to/pre_adaptation.model \
-  --final /path/to/post_adaptation.model \
-  --blocks E4 E5 B D5 D4 \
-  --output outputs/middle_displacement.csv
-```
-
-Compute held-out-case bootstrap intervals:
-
-```bash
-python reproducibility/bootstrap_metrics.py \
-  --baseline /path/to/umd_before/val_metrics_eval.json \
-  --retained /path/to/umd_after/val_metrics_eval.json \
-  --new-task /path/to/ecpc_after/val_metrics_eval.json \
-  --output outputs/middle_bootstrap.json
-```
-
-Render the complete activation-ablation command set without executing it:
-
-```bash
-python reproducibility/block_ablation.py \
-  --checkpoint-path /path/to/model_final_checkpoint.model \
-  --evaluation-root "$EVALUATION_FOLDER" \
-  --raw-task-root "$nnUNet_raw_data_base/nnUNet_raw_data" \
-  --output-dir outputs/block_ablation \
-  --trained-on 666 555 --use-model 666 555 --use-head 666 \
-  --evaluate-on 666 \
-  --trainer nnUNetTrainerSequentialChannelPreserve \
-  --plans nnUNetPlansv2.1_unfreeze_E456D45
-```
-
-Add `--execute` only after verifying paths and rendered commands. Activation
-ablation measures functional reliance at inference; it is not evidence that
-updating a block causes forgetting.
-
-## Reproducibility boundaries
-
-- `PAPER_INIT_CHECKPOINT` must identify the common pre-adaptation Task-1
-  checkpoint used by controlled two-task experiments.
-- Case bootstrap intervals quantify finite evaluation-cohort uncertainty, not
-  training-seed variability.
-- Gradient calibration is performed once on initial batches. The resulting
-  block multipliers remain fixed while the common polynomial schedule decays.
-- Approximate RMS matching is assessed at the final checkpoint; it is not
-  enforced online.
-- Dataset conversion and access remain governed by the original dataset
-  providers and institutional approvals.
-
-See the complete [method documentation](docs/METHOD.md),
-[experiment guide](docs/EXPERIMENTS.md), and
-[reported-result schema](docs/RESULTS.md). The exact recorded software stack is
-listed in [`docs/ENVIRONMENT.md`](docs/ENVIRONMENT.md).
+See [`docs/METHOD.md`](docs/METHOD.md), [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md),
+and [`docs/RESULTS.md`](docs/RESULTS.md) for details, and
+[`CHANGELOG.md`](CHANGELOG.md) for corrections to earlier versions.
 
 ## Development checks
 
-The lightweight checks do not require datasets or a GPU:
+These need no data or GPU:
 
 ```bash
 python -m unittest discover -s reproducibility/tests -v
@@ -183,12 +151,9 @@ python reproducibility/run_experiment.py --list > /dev/null
 python -m compileall -q reproducibility
 ```
 
-Full upstream tests may require the complete nnU-Net environment and a CUDA
-device.
-
-## Upstream attribution and license
+## Attribution and license
 
 This repository is derived from Lifelong nnU-Net and includes its original
-continual-learning implementations. Please cite both the associated study and
-the upstream framework when using the software. The code is distributed under
-the [Apache License 2.0](LICENSE).
+continual-learning implementations. Please cite both this study and the
+upstream framework. The code is distributed under the
+[Apache License 2.0](LICENSE).

@@ -10,10 +10,32 @@ before rendering commands.
 ```bash
 python reproducibility/run_experiment.py --list
 python reproducibility/run_experiment.py --group fixed_lr_depth
+python reproducibility/run_experiment.py --question Q2
 ```
 
 Rendering is safe and does not start a process. Add `--execute` only to the
-specific stage you intend to run.
+specific stage you intend to run. With `--group` or `--question`, executed runs
+train and evaluate one after another, which suits a single GPU.
+
+## Research questions
+
+The `questions` section of the registry maps each paper table row to its
+experiments:
+
+- `Q1` (adaptation depth): `progressive`, `matched_rms`, and `mri_to_mri`;
+- `Q2` (learning-rate allocation): `shared_vs_scale_aware`;
+- `Q3` (smaller learning rate): `uniform_lr_control`.
+
+`--question` selects every experiment of a question once, even when a run
+appears in several rows.
+
+## Plans aliases
+
+Each experiment has its own plans identifier so that results land in separate
+output folders. Before training or evaluating, the runner checks every task's
+alias: a missing alias is created as a copy of that task's base plans
+(`nnUNetPlansv2.1_plans_3D.pkl`), and an alias that differs from it stops the
+run. A dry run only reports aliases it would create.
 
 ## Common initialization
 
@@ -42,7 +64,8 @@ python reproducibility/run_experiment.py --group scale_control --stage train
 ```
 
 The gradient-normalized controls use 20 gradient-only batches, bottleneck as
-the reference block, seed 12345, and the same base LR schedule. The broad
+the reference block, and the same base LR schedule; each seed is calibrated
+separately. The broad
 RMS-targeted configuration instead uses base LR 0.008; final RMS is measured
 after training and is not constrained online.
 
@@ -56,17 +79,25 @@ This changes the successor task from ECPC-IDS to UT-EndoMRI but retains UMD as
 the first task. It is an additional transition, not a randomized or reversed
 task-order experiment.
 
-## Additional seeds
-
-The launcher runs one job at a time for a single-GPU machine:
+## Uniform learning-rate control
 
 ```bash
-bash reproducibility/run_seed_replicates.sh
+python reproducibility/run_experiment.py --group uniform_lr_control
 ```
 
-It creates seed-specific aliases of the original plans and refuses to replace
-an alias whose content differs. The data split and initialization checkpoint
-remain fixed; only adaptation stochasticity changes.
+These runs train `R4` with a single base learning rate of 0.005 or 0.0025
+(seed 12345) and are compared with the shared-LR (0.01) and scale-aware `R4`
+runs in `Q3`.
+
+## Additional seeds
+
+Shared-LR and scale-aware configurations are repeated with adaptation seeds
+23456 and 34567 (groups `seed_replicates` and `scale_control`). The data split
+and initialization checkpoint remain fixed; only adaptation stochasticity
+changes. The full-backbone shared-LR runs used for seed comparisons
+(`ecpc_full_controlled_seed*`) use the same controlled trainer as the
+restricted regions; `ecpc_full` follows the standard sequential trainer and is
+kept as a boundary case.
 
 ## Evaluation
 

@@ -139,6 +139,8 @@ def run_evaluation2(network, network_trainer, tasks_list_with_char: tuple[list[s
         'use_model': use_model,
         'tasks_list_with_char': tasks_list_with_char,
         'plans_identifier': plans_identifier,
+        # Held-out evaluation must preprocess with the evaluated task's own plans.
+        'require_task_plans': True,
         'vit_type': vit_type,
         'version': version,
         'drop_encoder_block': drop_encoder_block,

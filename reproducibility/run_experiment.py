@@ -8,6 +8,7 @@ so configurations can be reviewed before expensive training begins.
 from __future__ import annotations
 
 import argparse
+import filecmp
 import json
 import os
 import shlex
@@ -34,6 +35,7 @@ EVAL_TRAINERS = {
     "ewc": "nnUNetTrainerEWC",
 }
 REQUIRED_ENV = ("nnUNet_raw_data_base", "nnUNet_preprocessed", "RESULTS_FOLDER", "EVALUATION_FOLDER")
+BASE_PLAN = "nnUNetPlansv2.1"
 
 
 def load_manifest():
@@ -62,6 +64,26 @@ def validate_manifest(manifest):
                 raise SystemExit(
                     f"{exp['id']}: blocks {sorted(declared)} do not match CLI selection {sorted(derived)}"
                 )
+    for question, spec in manifest.get("questions", {}).items():
+        for table, rows in spec["tables"].items():
+            for row in rows:
+                missing = [x for x in row["experiments"] if x not in ids]
+                if missing:
+                    raise SystemExit(f"{question}/{table}/{row['label']}: unknown experiment(s) {missing}")
+
+
+def question_experiments(manifest, question):
+    """Return the experiments behind one research question, in table order."""
+    questions = manifest.get("questions", {})
+    if question not in questions:
+        raise SystemExit(f"Unknown question '{question}'. Available: {', '.join(questions)}")
+    ordered = []
+    for rows in questions[question]["tables"].values():
+        for row in rows:
+            for experiment_id in row["experiments"]:
+                if experiment_id not in ordered:
+                    ordered.append(experiment_id)
+    return [experiment_by_id(manifest, experiment_id) for experiment_id in ordered]
 
 
 def experiment_by_id(manifest, experiment_id):
@@ -150,6 +172,36 @@ def evaluation_commands(exp, defaults, datasets):
     return commands
 
 
+def prepare_plan_aliases(exp, datasets, execute):
+    """Make each task's plans alias a copy of that task's own base plans.
+
+    Every experiment-specific plans identifier only names an output folder;
+    freezing and learning rates are set on the command line. Inference reads the
+    alias of the evaluated task, so an alias copied from another task would
+    preprocess test images with the wrong normalization and spacing.
+    """
+    if exp["method"] == "single_task" or exp["plan"] == BASE_PLAN:
+        return
+    preprocessed = Path(os.environ["nnUNet_preprocessed"])
+    for task in exp["tasks"]:
+        task_dir = preprocessed / datasets[str(task)]["name"]
+        base = task_dir / f"{BASE_PLAN}_plans_3D.pkl"
+        alias = task_dir / f"{exp['plan']}_plans_3D.pkl"
+        if not base.is_file():
+            raise SystemExit(f"Missing base plans for {task_dir.name}: {base}. Run preprocessing first.")
+        if alias.exists():
+            if not filecmp.cmp(base, alias, shallow=False):
+                raise SystemExit(
+                    f"{alias} differs from {base}. Plans aliases must be copies of the "
+                    "evaluated task's own base plans; remove or replace it before continuing."
+                )
+        elif execute:
+            shutil.copyfile(base, alias)
+            print(f"# created plans alias {alias}", flush=True)
+        else:
+            print(f"# would create plans alias {alias}", flush=True)
+
+
 def validate_environment(commands, execute):
     missing_env = [name for name in REQUIRED_ENV if not os.environ.get(name)]
     if missing_env:
@@ -165,6 +217,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("experiment", nargs="?", help="experiment id from experiments.json")
     parser.add_argument("--group", help="render or execute every experiment in a registered group")
+    parser.add_argument("--question", help="render or execute every experiment behind Q1, Q2, or Q3")
     parser.add_argument("--stage", choices=("train", "evaluate", "all"), default="all")
     parser.add_argument("--execute", action="store_true", help="execute commands; default is dry-run")
     parser.add_argument("--list", action="store_true", help="list registered experiments")
@@ -175,10 +228,12 @@ def main():
         for exp in manifest["experiments"]:
             print(f"{exp['id']:<38} {exp['group']:<20} tasks={exp['tasks']}")
         return
-    if bool(args.experiment) == bool(args.group):
-        parser.error("provide exactly one experiment id or --group (or use --list)")
+    if sum(map(bool, (args.experiment, args.group, args.question))) != 1:
+        parser.error("provide exactly one experiment id, --group, or --question (or use --list)")
 
-    if args.group:
+    if args.question:
+        experiments = question_experiments(manifest, args.question)
+    elif args.group:
         experiments = [exp for exp in manifest["experiments"] if exp["group"] == args.group]
         if not experiments:
             groups = sorted({exp["group"] for exp in manifest["experiments"]})
@@ -194,6 +249,7 @@ def main():
             commands.extend(evaluation_commands(exp, manifest["defaults"], manifest["datasets"]))
         validate_environment(commands, args.execute)
         print(f"\n# experiment: {exp['id']}", flush=True)
+        prepare_plan_aliases(exp, manifest["datasets"], args.execute)
         for command in commands:
             print("$ " + shlex.join(command), flush=True)
             if args.execute:

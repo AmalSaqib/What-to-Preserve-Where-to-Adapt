@@ -1,0 +1,5 @@
+question,table,row,n_seeds,seeds,old_task_forgetting_mean,old_task_forgetting_sd,new_task_dice_mean,new_task_dice_sd,rms_delta_mean,rms_delta_sd,outer_pair_share_percent_mean,outer_pair_share_percent_sd,bottleneck_share_percent_mean,bottleneck_share_percent_sd
+Q3,uniform_lr_control,Shared LR 0.01,1,12345,0.2714126004680422,nan,0.7329100890640485,nan,0.004859131174668631,nan,55.87363041219599,nan,12.226456279852856,nan
+Q3,uniform_lr_control,Uniform LR 0.005,1,12345,0.13995758981970186,nan,0.7309462955240078,nan,0.0030401675131937578,nan,65.74583788367435,nan,9.45030601734875,nan
+Q3,uniform_lr_control,Uniform LR 0.0025,1,12345,0.09755688672669716,nan,0.7383886226295961,nan,0.001992002863019469,nan,76.36438487929385,nan,6.12893990880781,nan
+Q3,uniform_lr_control,Scale-aware,1,12345,0.025157762056420063,nan,0.7183092448354731,nan,0.0022680626372415472,nan,12.160968333825835,nan,55.14468037967942,nan

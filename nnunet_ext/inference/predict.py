@@ -448,6 +448,12 @@ def predict_from_folder(params_ext, model: str, input_folder: str, output_folder
             task_plans_file = c3d
         elif isfile(c2d):
             task_plans_file = c2d
+        if task_plans_file is None and params_ext.get('require_task_plans', False):
+            # Falling back to the checkpoint's plans would use the plans of the last
+            # trained task, silently mis-preprocessing every earlier task.
+            raise FileNotFoundError(
+                "No plans file for the evaluated task: expected {} (or the 2D variant). "
+                "Create it as a copy of that task's base plans before evaluating.".format(c3d))
 
     if no_load:
         assert trainer is not None and params is not None and plans_path_ is not None, 'If no_load is True, then you have to provide the restored trainer and its parameters as well as plans_path_..'

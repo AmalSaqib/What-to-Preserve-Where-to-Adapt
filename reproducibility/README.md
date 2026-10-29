@@ -11,13 +11,12 @@ of commands and source files.
 | `config.example.env` | Portable nnU-Net data, results, evaluation, and initialization paths |
 | `experiments.json` | Canonical dataset and experiment registry |
 | `preprocess.py` | Read-only dataset validation and opt-in nnU-Net preprocessing |
-| `run_experiment.py` | Dry-run-by-default training and evaluation command renderer |
+| `run_experiment.py` | Dry-run-by-default training and evaluation runner (`--question`, `--group`, or one experiment) |
+| `summarize_questions.py` | Rebuilds the Q1–Q3 tables from checkpoints and evaluations |
 | `checkpoint_displacement.py` | Aggregate and per-block checkpoint movement |
 | `bootstrap_metrics.py` | Paired old-task and new-task case-bootstrap intervals |
 | `block_ablation.py` | Dry-run-by-default full encoder/decoder activation ablation |
-| `reported_results.csv` | Patient-anonymous aggregate reference results |
-| `reported_seed_summary.csv` | Aggregate fixed-LR seed summary |
-| `run_*sh` | Sequential launchers for long single-GPU experiment groups |
+| `reported/` | Patient-anonymous aggregate values reported in the paper |
 | `MULTITALENT.md` | Joint baseline in the separate nnU-Net v2 environment |
 
 ## Minimal workflow
@@ -46,7 +45,9 @@ python reproducibility/run_experiment.py ecpc_middle_gradient_normalized \
 - bottleneck, middle, broad, and full scale-control conditions;
 - UMD to UT-EndoMRI replication;
 - Sequential, Rehearsal, LwF, and EWC baselines;
-- additional fixed-LR seeds;
+- additional shared-LR and scale-aware seeds;
+- the uniform learning-rate control;
+- the Q1–Q3 summary tables (`summarize_questions.py`);
 - checkpoint displacement and per-block allocation;
 - case-level bootstrap intervals;
 - inference-time block activation ablation.

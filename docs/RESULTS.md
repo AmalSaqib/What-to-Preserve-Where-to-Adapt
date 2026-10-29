@@ -12,14 +12,27 @@ Gradient-normalized runs write:
 On resume, the trainer restores the initial multipliers instead of recalibrating
 from a partially adapted checkpoint.
 
-Compact, patient-anonymous summaries of the values reported in the manuscript
-are provided in:
+## Question tables
 
-- `reproducibility/reported_results.csv`;
-- `reproducibility/reported_seed_summary.csv`.
+`summarize_questions.py` writes two CSV files per table to
+`outputs/questions/`:
 
-These files contain aggregate metrics only. They are reference outputs, not a
-substitute for the checkpoint and per-case analyses that produced them.
+- `<question>_<table>_per_seed.csv`: one row per run with seed, learning-rate
+  allocation, trainable parameters, RMS, relative and total L2 displacement,
+  UMD forgetting, current-task Dice, outer-pair and bottleneck shares of
+  squared displacement, and every block's share;
+- `<question>_<table>_summary.csv`: one row per table row with the number of
+  seeds and the mean and sample SD (ddof=1) of the main metrics.
+
+Forgetting is the macro Dice of the initial checkpoint on held-out UMD cases
+minus the macro Dice after adaptation. The outer pair is the outermost
+trainable encoder and decoder block of a nested region (for `R4`, `E4` and
+`D4`).
+
+The values reported in the paper are included in the same format in
+`reproducibility/reported/`. These files contain aggregate metrics only; they
+are reference outputs, not a substitute for the checkpoints and per-case
+evaluations that produced them.
 
 ## Checkpoint displacement
 

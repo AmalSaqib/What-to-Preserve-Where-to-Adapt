@@ -1,0 +1,4 @@
+question,table,row,n_seeds,seeds,old_task_forgetting_mean,old_task_forgetting_sd,new_task_dice_mean,new_task_dice_sd,rms_delta_mean,rms_delta_sd,outer_pair_share_percent_mean,outer_pair_share_percent_sd,bottleneck_share_percent_mean,bottleneck_share_percent_sd
+Q1,mri_to_mri,B,1,12345,0.05918138232708503,nan,0.09850248050690515,nan,0.006812095201826994,nan,0.0,nan,100.0,nan
+Q1,mri_to_mri,R4,1,12345,0.6379779984078907,nan,0.24349501471693444,nan,0.00673262486429564,nan,71.32399385594101,nan,6.9743122592807145,nan
+Q1,mri_to_mri,R1 (LR 0.008),1,12345,0.6361587264263519,nan,0.3018625175642613,nan,0.005727890529723161,nan,7.285414959548933,nan,4.9094028362580024,nan

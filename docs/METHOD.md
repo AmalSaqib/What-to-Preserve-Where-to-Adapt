@@ -49,6 +49,26 @@ restored when training resumes, and remain fixed. The base learning rate
 follows nnU-Net's polynomial decay. This is an initial gradient-scale control,
 not an online displacement-matching algorithm.
 
+## Uniform learning-rate control
+
+To test whether scale-aware rates help only because they lower the effective
+step size, the same trainable region (`R4`) is also trained with a single,
+uniformly reduced base learning rate (0.005 and 0.0025 instead of 0.01). The
+0.0025 run ends with slightly smaller average movement (RMS) than the
+scale-aware run, so the two can be compared at approximately matched RMS while
+differing in how movement is allocated across blocks.
+
+## Evaluation preprocessing
+
+Every experiment-specific plans identifier (for example
+`nnUNetPlansv2.1_unfreeze_E456D45`) only names an output folder; freezing and
+learning rates are passed on the command line. At inference, the evaluated
+task is preprocessed with that task's copy of the plans, which must therefore
+be identical to the task's own base plans (`nnUNetPlansv2.1`).
+`run_experiment.py` creates missing aliases from the correct task and refuses
+to continue if an existing alias differs, and held-out evaluation stops with an
+error instead of falling back to the plans of the last trained task.
+
 ## Displacement quantities
 
 For selected trainable parameters `S`, the analysis reports:

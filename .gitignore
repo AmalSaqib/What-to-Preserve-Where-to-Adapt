@@ -22,8 +22,6 @@
 *.pkl
 *.npy
 *.npz
-!reproducibility/reported_results.csv
-!reproducibility/reported_seed_summary.csv
 
 # Local experiment configuration and credentials.
 .env
