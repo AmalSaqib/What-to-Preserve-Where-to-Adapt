@@ -61,18 +61,19 @@ def main():
             width = row["shares"][block]
             ax.barh(y, width, left=left, height=0.66, color=COLORS[block],
                     edgecolor="white", linewidth=1.0)
-            if width >= 9:
-                ax.text(left + width / 2, y, f"{block}\n{width:.0f}%", ha="center", va="center",
-                        fontsize=5.6, color=LABEL_INK[block], linespacing=0.95)
-            elif width >= 5:  # narrow segment: value only; colour and position identify the block
-                ax.text(left + width / 2, y, f"{width:.0f}%", ha="center", va="center",
-                        fontsize=5.0, color=LABEL_INK[block])
+            label = f"{block}\n{width:.0f}%"
+            if width >= 5:
+                ax.text(left + width / 2, y, label, ha="center", va="center",
+                        fontsize=5.6 if width >= 9 else 4.8, color=LABEL_INK[block], linespacing=0.95)
+            else:  # too narrow to hold text: label just below the bar
+                ax.text(left, y + 0.36, f"{block} {width:.0f}%", ha="left", va="top",
+                        fontsize=4.8, color=INK)
             left += width
         ax.text(103, y, f"{row['forgetting']:.3f}", ha="left", va="center", fontsize=6.5, color=INK)
 
     ax.text(103, -0.75, "UMD\nforgetting", ha="left", va="bottom", fontsize=6, color=MUTED, linespacing=0.95)
     ax.set_yticks(range(len(rows)), [row["label"] for row in rows])
-    ax.invert_yaxis()
+    ax.set_ylim(len(rows) - 0.5 + 0.25, -0.5)
     ax.set_xlim(0, 100)
     ax.set_xticks([0, 25, 50, 75, 100])
     ax.set_xlabel("Share of squared parameter displacement in $\\mathcal{R}_4$ (%)", color=INK)
