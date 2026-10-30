@@ -14,7 +14,6 @@ import csv
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch
 
 
 HERE = Path(__file__).resolve().parent
@@ -59,16 +58,22 @@ def main():
         left = 0.0
         for block in BLOCK_ORDER:
             width = row["shares"][block]
-            ax.barh(y, width, left=left, height=0.66, color=COLORS[block],
+            ax.barh(y, width, left=left, height=0.6, color=COLORS[block],
                     edgecolor="white", linewidth=1.0)
             label = f"{block}\n{width:.0f}%"
-            size = 5.6 if width >= 9 else 4.8 if width >= 5 else 4.2  # smaller text in narrow segments
-            ax.text(left + width / 2, y, label, ha="center", va="center",
-                    fontsize=size, color=LABEL_INK[block], linespacing=0.95)
+            if width >= 5:
+                ax.text(left + width / 2, y, label, ha="center", va="center",
+                        fontsize=5.6 if width >= 9 else 4.8, color=LABEL_INK[block], linespacing=0.95)
+            else:  # too narrow for text: call out in the gap above the bar
+                ax.annotate(f"{block} {width:.0f}%", xy=(left + width / 2, y - 0.3),
+                            xytext=(left + width / 2 + 3, y - 0.5), ha="left", va="center",
+                            fontsize=5.0, color=INK,
+                            arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.5,
+                                            shrinkA=0, shrinkB=0))
             left += width
         ax.text(103, y, f"{row['forgetting']:.3f}", ha="left", va="center", fontsize=6.5, color=INK)
 
-    ax.text(103, -0.75, "UMD\nforgetting", ha="left", va="bottom", fontsize=6, color=MUTED, linespacing=0.95)
+    ax.text(103, -0.55, "UMD\nforgetting", ha="left", va="bottom", fontsize=6, color=MUTED, linespacing=0.95)
     ax.set_yticks(range(len(rows)), [row["label"] for row in rows])
     ax.invert_yaxis()
     ax.set_xlim(0, 100)
@@ -78,12 +83,6 @@ def main():
     ax.tick_params(axis="x", length=2, width=0.6)
     for side in ("top", "right", "left"):
         ax.spines[side].set_visible(False)
-
-    handles = [Patch(facecolor=COLORS["E4"], label="Outer pair ($E_4$, $D_4$)"),
-               Patch(facecolor=COLORS["E5"], label="$E_5$, $D_5$"),
-               Patch(facecolor=COLORS["B"], label="Bottleneck ($B$)")]
-    ax.legend(handles=handles, ncol=3, frameon=False, loc="lower center", bbox_to_anchor=(0.45, 1.0),
-              fontsize=6, handlelength=1.0, handleheight=0.8, columnspacing=1.0, borderaxespad=0.3)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(args.output, bbox_inches="tight", pad_inches=0.02, metadata={"Author": ""})
