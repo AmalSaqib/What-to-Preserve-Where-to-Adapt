@@ -22,9 +22,9 @@ BLOCK_ORDER = ["E4", "E5", "B", "D5", "D4"]
 COLORS = {"E4": "#F59449", "D4": "#F59449", "E5": "#B8C2CC", "D5": "#B8C2CC", "B": "#6591C0"}
 LABEL_INK = {"E4": "#1F2328", "D4": "#1F2328", "E5": "#1F2328", "D5": "#1F2328", "B": "#1F2328"}
 ROW_LABELS = {
-    "Shared LR 0.01": "Shared, 0.01",
-    "Uniform LR 0.005": "Uniform, 0.005",
-    "Uniform LR 0.0025": "Uniform, 0.0025",
+    "Shared LR 0.01": "Shared\n0.01",
+    "Uniform LR 0.005": "Uniform\n0.005",
+    "Uniform LR 0.0025": "Uniform\n0.0025",
     "Scale-aware": "Scale-aware",
 }
 INK = "#1F2328"
@@ -52,7 +52,7 @@ def main():
 
     rows = read_rows(args.input)
     plt.rcParams.update({"font.size": 7, "axes.edgecolor": MUTED, "axes.linewidth": 0.6,
-                         "xtick.color": MUTED, "ytick.color": INK, "pdf.fonttype": 42})
+                         "xtick.color": MUTED, "ytick.color": INK, "ytick.labelsize": 6.5, "pdf.fonttype": 42})
     fig, ax = plt.subplots(figsize=(3.4, 1.75))
 
     for y, row in enumerate(rows):
@@ -62,18 +62,15 @@ def main():
             ax.barh(y, width, left=left, height=0.66, color=COLORS[block],
                     edgecolor="white", linewidth=1.0)
             label = f"{block}\n{width:.0f}%"
-            if width >= 5:
-                ax.text(left + width / 2, y, label, ha="center", va="center",
-                        fontsize=5.6 if width >= 9 else 4.8, color=LABEL_INK[block], linespacing=0.95)
-            else:  # too narrow to hold text: label just below the bar
-                ax.text(left, y + 0.36, f"{block} {width:.0f}%", ha="left", va="top",
-                        fontsize=4.8, color=INK)
+            size = 5.6 if width >= 9 else 4.8 if width >= 5 else 4.2  # smaller text in narrow segments
+            ax.text(left + width / 2, y, label, ha="center", va="center",
+                    fontsize=size, color=LABEL_INK[block], linespacing=0.95)
             left += width
         ax.text(103, y, f"{row['forgetting']:.3f}", ha="left", va="center", fontsize=6.5, color=INK)
 
     ax.text(103, -0.75, "UMD\nforgetting", ha="left", va="bottom", fontsize=6, color=MUTED, linespacing=0.95)
     ax.set_yticks(range(len(rows)), [row["label"] for row in rows])
-    ax.set_ylim(len(rows) - 0.5 + 0.25, -0.5)
+    ax.invert_yaxis()
     ax.set_xlim(0, 100)
     ax.set_xticks([0, 25, 50, 75, 100])
     ax.set_xlabel("Share of squared parameter displacement in $\\mathcal{R}_4$ (%)", color=INK)
