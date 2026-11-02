@@ -30,10 +30,12 @@ INK = "#1F2328"
 MUTED = "#57606A"
 
 
-def read_rows(path: Path):
+def read_rows(path: Path, exclude=frozenset()):
     rows = []
     with path.open() as handle:
         for row in csv.DictReader(handle):
+            if row["row"] in exclude:
+                continue
             shares = dict(item.split("=") for item in row["block_shares_percent"].split(";"))
             rows.append({
                 "label": ROW_LABELS.get(row["row"], row["row"]),
@@ -47,12 +49,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=HERE / "reported" / "Q3_uniform_lr_control_per_seed.csv")
     parser.add_argument("--output", type=Path, default=Path("outputs/figures/r4_block_shares.pdf"))
+    parser.add_argument("--exclude", nargs="*", default=[], metavar="ROW",
+                        help='input rows to leave out, e.g. "Uniform LR 0.005"')
     args = parser.parse_args()
 
-    rows = read_rows(args.input)
+    rows = read_rows(args.input, set(args.exclude))
     plt.rcParams.update({"font.size": 7, "axes.edgecolor": MUTED, "axes.linewidth": 0.6,
                          "xtick.color": MUTED, "ytick.color": INK, "ytick.labelsize": 6.5, "pdf.fonttype": 42})
-    fig, ax = plt.subplots(figsize=(3.4, 1.75))
+    fig, ax = plt.subplots(figsize=(3.4, 0.5 + 0.31 * len(rows)))
 
     for y, row in enumerate(rows):
         left = 0.0
