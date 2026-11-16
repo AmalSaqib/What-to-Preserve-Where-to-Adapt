@@ -1,0 +1,377 @@
+{
+    "description": "Endometriosis MRI T1FS dataset with merged labels",
+    "labels": {
+        "0": "background",
+        "1": "ut",
+        "2": "ov",
+        "3": "em",
+        "4": "cy"
+    },
+    "licence": "hands off!",
+    "modality": {
+        "0": "T1FS",
+        "1": "zero"
+    },
+    "name": "EndoMRI_T1FS",
+    "numTest": 20,
+    "numTraining": 83,
+    "reference": "",
+    "release": "1.0",
+    "tensorImageSize": "4D",
+    "test": [
+        "./imagesTs/EndoT1FS_1001.nii.gz",
+        "./imagesTs/EndoT1FS_1011.nii.gz",
+        "./imagesTs/EndoT1FS_1012.nii.gz",
+        "./imagesTs/EndoT1FS_1019.nii.gz",
+        "./imagesTs/EndoT1FS_1040.nii.gz",
+        "./imagesTs/EndoT1FS_1041.nii.gz",
+        "./imagesTs/EndoT1FS_1046.nii.gz",
+        "./imagesTs/EndoT1FS_1050.nii.gz",
+        "./imagesTs/EndoT1FS_2003.nii.gz",
+        "./imagesTs/EndoT1FS_2004.nii.gz",
+        "./imagesTs/EndoT1FS_2006.nii.gz",
+        "./imagesTs/EndoT1FS_2009.nii.gz",
+        "./imagesTs/EndoT1FS_2015.nii.gz",
+        "./imagesTs/EndoT1FS_2017.nii.gz",
+        "./imagesTs/EndoT1FS_2026.nii.gz",
+        "./imagesTs/EndoT1FS_2027.nii.gz",
+        "./imagesTs/EndoT1FS_2040.nii.gz",
+        "./imagesTs/EndoT1FS_2049.nii.gz",
+        "./imagesTs/EndoT1FS_2052.nii.gz",
+        "./imagesTs/EndoT1FS_2054.nii.gz"
+    ],
+    "training": [
+        {
+            "image": "./imagesTr/EndoT1FS_1000.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1000.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1002.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1002.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1003.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1003.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1006.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1006.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1007.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1007.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1008.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1008.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1009.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1009.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1010.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1010.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1014.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1014.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1016.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1016.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1017.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1017.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1018.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1018.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1020.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1020.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1021.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1021.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1023.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1023.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1024.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1024.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1025.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1025.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1026.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1026.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1028.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1028.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1029.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1029.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1030.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1030.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1032.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1032.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1034.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1034.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1035.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1035.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1036.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1036.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1037.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1037.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1038.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1038.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1039.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1039.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1043.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1043.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1044.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1044.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1045.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1045.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1047.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1047.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1048.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1048.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_1049.nii.gz",
+            "label": "./labelsTr/EndoT1FS_1049.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2001.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2001.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2002.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2002.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2005.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2005.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2007.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2007.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2008.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2008.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2010.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2010.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2011.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2011.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2012.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2012.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2013.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2013.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2014.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2014.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2016.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2016.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2018.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2018.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2019.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2019.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2021.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2021.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2022.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2022.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2023.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2023.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2024.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2024.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2025.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2025.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2028.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2028.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2029.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2029.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2038.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2038.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2039.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2039.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2041.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2041.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2042.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2042.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2044.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2044.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2047.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2047.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2048.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2048.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2051.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2051.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2053.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2053.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2055.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2055.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2056.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2056.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2057.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2057.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2058.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2058.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2059.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2059.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2060.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2060.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2061.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2061.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2062.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2062.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2063.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2063.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2065.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2065.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2066.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2066.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2067.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2067.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2070.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2070.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2073.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2073.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2074.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2074.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2075.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2075.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2076.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2076.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2077.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2077.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2078.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2078.nii.gz"
+        },
+        {
+            "image": "./imagesTr/EndoT1FS_2079.nii.gz",
+            "label": "./labelsTr/EndoT1FS_2079.nii.gz"
+        }
+    ]
+}

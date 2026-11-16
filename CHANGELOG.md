@@ -14,6 +14,12 @@
   for R5, R3, and R0, and controlled-trainer full-backbone shared-LR runs.
 - Uniform learning-rate control for R4 (base LR 0.005 and 0.0025).
 - Aggregate reference results in `reproducibility/reported/`.
+- `data_conversion/`: scripts that rebuild the UMD, ECPC-IDS, and UT-EndoMRI
+  task folders from the public downloads, reference fingerprints of the data
+  used in the paper, and a verifier.
+- Trained checkpoints and held-out evaluations on Hugging Face
+  (`AmalSaqib/What-to-Preserve-Where-to-Adapt`, with further models in
+  `AmalSaqib/Continual-Gyne-Segmentation-Thesis`).
 
 ### Fixed
 

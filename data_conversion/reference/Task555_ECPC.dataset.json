@@ -1,0 +1,480 @@
+{
+    "description": "",
+    "labels": {
+        "0": "background",
+        "1": "tumor"
+    },
+    "licence": "hands off!",
+    "modality": {
+        "0": "CT",
+        "1": "PET"
+    },
+    "name": "Task502_PETCT",
+    "numTest": 26,
+    "numTraining": 108,
+    "reference": "",
+    "release": "0.0",
+    "tensorImageSize": "4D",
+    "test": [
+        "./imagesTs/PETCT_004.nii.gz",
+        "./imagesTs/PETCT_005.nii.gz",
+        "./imagesTs/PETCT_007.nii.gz",
+        "./imagesTs/PETCT_013.nii.gz",
+        "./imagesTs/PETCT_029.nii.gz",
+        "./imagesTs/PETCT_031.nii.gz",
+        "./imagesTs/PETCT_032.nii.gz",
+        "./imagesTs/PETCT_034.nii.gz",
+        "./imagesTs/PETCT_035.nii.gz",
+        "./imagesTs/PETCT_042.nii.gz",
+        "./imagesTs/PETCT_066.nii.gz",
+        "./imagesTs/PETCT_069.nii.gz",
+        "./imagesTs/PETCT_076.nii.gz",
+        "./imagesTs/PETCT_079.nii.gz",
+        "./imagesTs/PETCT_084.nii.gz",
+        "./imagesTs/PETCT_085.nii.gz",
+        "./imagesTs/PETCT_086.nii.gz",
+        "./imagesTs/PETCT_090.nii.gz",
+        "./imagesTs/PETCT_092.nii.gz",
+        "./imagesTs/PETCT_099.nii.gz",
+        "./imagesTs/PETCT_103.nii.gz",
+        "./imagesTs/PETCT_109.nii.gz",
+        "./imagesTs/PETCT_112.nii.gz",
+        "./imagesTs/PETCT_132.nii.gz",
+        "./imagesTs/PETCT_136.nii.gz",
+        "./imagesTs/PETCT_140.nii.gz"
+    ],
+    "training": [
+        {
+            "image": "./imagesTr/PETCT_001.nii.gz",
+            "label": "./labelsTr/PETCT_001.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_002.nii.gz",
+            "label": "./labelsTr/PETCT_002.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_003.nii.gz",
+            "label": "./labelsTr/PETCT_003.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_006.nii.gz",
+            "label": "./labelsTr/PETCT_006.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_008.nii.gz",
+            "label": "./labelsTr/PETCT_008.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_010.nii.gz",
+            "label": "./labelsTr/PETCT_010.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_011.nii.gz",
+            "label": "./labelsTr/PETCT_011.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_012.nii.gz",
+            "label": "./labelsTr/PETCT_012.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_014.nii.gz",
+            "label": "./labelsTr/PETCT_014.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_015.nii.gz",
+            "label": "./labelsTr/PETCT_015.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_016.nii.gz",
+            "label": "./labelsTr/PETCT_016.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_017.nii.gz",
+            "label": "./labelsTr/PETCT_017.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_018.nii.gz",
+            "label": "./labelsTr/PETCT_018.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_019.nii.gz",
+            "label": "./labelsTr/PETCT_019.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_020.nii.gz",
+            "label": "./labelsTr/PETCT_020.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_022.nii.gz",
+            "label": "./labelsTr/PETCT_022.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_023.nii.gz",
+            "label": "./labelsTr/PETCT_023.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_024.nii.gz",
+            "label": "./labelsTr/PETCT_024.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_026.nii.gz",
+            "label": "./labelsTr/PETCT_026.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_027.nii.gz",
+            "label": "./labelsTr/PETCT_027.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_028.nii.gz",
+            "label": "./labelsTr/PETCT_028.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_036.nii.gz",
+            "label": "./labelsTr/PETCT_036.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_037.nii.gz",
+            "label": "./labelsTr/PETCT_037.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_038.nii.gz",
+            "label": "./labelsTr/PETCT_038.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_040.nii.gz",
+            "label": "./labelsTr/PETCT_040.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_041.nii.gz",
+            "label": "./labelsTr/PETCT_041.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_044.nii.gz",
+            "label": "./labelsTr/PETCT_044.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_046.nii.gz",
+            "label": "./labelsTr/PETCT_046.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_047.nii.gz",
+            "label": "./labelsTr/PETCT_047.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_048.nii.gz",
+            "label": "./labelsTr/PETCT_048.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_049.nii.gz",
+            "label": "./labelsTr/PETCT_049.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_050.nii.gz",
+            "label": "./labelsTr/PETCT_050.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_051.nii.gz",
+            "label": "./labelsTr/PETCT_051.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_052.nii.gz",
+            "label": "./labelsTr/PETCT_052.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_053.nii.gz",
+            "label": "./labelsTr/PETCT_053.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_054.nii.gz",
+            "label": "./labelsTr/PETCT_054.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_055.nii.gz",
+            "label": "./labelsTr/PETCT_055.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_056.nii.gz",
+            "label": "./labelsTr/PETCT_056.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_057.nii.gz",
+            "label": "./labelsTr/PETCT_057.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_058.nii.gz",
+            "label": "./labelsTr/PETCT_058.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_061.nii.gz",
+            "label": "./labelsTr/PETCT_061.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_063.nii.gz",
+            "label": "./labelsTr/PETCT_063.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_064.nii.gz",
+            "label": "./labelsTr/PETCT_064.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_065.nii.gz",
+            "label": "./labelsTr/PETCT_065.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_067.nii.gz",
+            "label": "./labelsTr/PETCT_067.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_068.nii.gz",
+            "label": "./labelsTr/PETCT_068.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_070.nii.gz",
+            "label": "./labelsTr/PETCT_070.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_072.nii.gz",
+            "label": "./labelsTr/PETCT_072.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_073.nii.gz",
+            "label": "./labelsTr/PETCT_073.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_074.nii.gz",
+            "label": "./labelsTr/PETCT_074.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_077.nii.gz",
+            "label": "./labelsTr/PETCT_077.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_080.nii.gz",
+            "label": "./labelsTr/PETCT_080.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_081.nii.gz",
+            "label": "./labelsTr/PETCT_081.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_082.nii.gz",
+            "label": "./labelsTr/PETCT_082.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_083.nii.gz",
+            "label": "./labelsTr/PETCT_083.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_087.nii.gz",
+            "label": "./labelsTr/PETCT_087.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_088.nii.gz",
+            "label": "./labelsTr/PETCT_088.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_089.nii.gz",
+            "label": "./labelsTr/PETCT_089.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_091.nii.gz",
+            "label": "./labelsTr/PETCT_091.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_093.nii.gz",
+            "label": "./labelsTr/PETCT_093.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_094.nii.gz",
+            "label": "./labelsTr/PETCT_094.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_095.nii.gz",
+            "label": "./labelsTr/PETCT_095.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_096.nii.gz",
+            "label": "./labelsTr/PETCT_096.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_097.nii.gz",
+            "label": "./labelsTr/PETCT_097.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_100.nii.gz",
+            "label": "./labelsTr/PETCT_100.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_102.nii.gz",
+            "label": "./labelsTr/PETCT_102.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_104.nii.gz",
+            "label": "./labelsTr/PETCT_104.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_106.nii.gz",
+            "label": "./labelsTr/PETCT_106.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_107.nii.gz",
+            "label": "./labelsTr/PETCT_107.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_108.nii.gz",
+            "label": "./labelsTr/PETCT_108.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_110.nii.gz",
+            "label": "./labelsTr/PETCT_110.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_111.nii.gz",
+            "label": "./labelsTr/PETCT_111.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_113.nii.gz",
+            "label": "./labelsTr/PETCT_113.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_114.nii.gz",
+            "label": "./labelsTr/PETCT_114.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_115.nii.gz",
+            "label": "./labelsTr/PETCT_115.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_116.nii.gz",
+            "label": "./labelsTr/PETCT_116.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_117.nii.gz",
+            "label": "./labelsTr/PETCT_117.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_118.nii.gz",
+            "label": "./labelsTr/PETCT_118.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_119.nii.gz",
+            "label": "./labelsTr/PETCT_119.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_120.nii.gz",
+            "label": "./labelsTr/PETCT_120.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_121.nii.gz",
+            "label": "./labelsTr/PETCT_121.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_122.nii.gz",
+            "label": "./labelsTr/PETCT_122.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_123.nii.gz",
+            "label": "./labelsTr/PETCT_123.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_124.nii.gz",
+            "label": "./labelsTr/PETCT_124.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_125.nii.gz",
+            "label": "./labelsTr/PETCT_125.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_126.nii.gz",
+            "label": "./labelsTr/PETCT_126.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_127.nii.gz",
+            "label": "./labelsTr/PETCT_127.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_128.nii.gz",
+            "label": "./labelsTr/PETCT_128.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_129.nii.gz",
+            "label": "./labelsTr/PETCT_129.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_130.nii.gz",
+            "label": "./labelsTr/PETCT_130.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_131.nii.gz",
+            "label": "./labelsTr/PETCT_131.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_133.nii.gz",
+            "label": "./labelsTr/PETCT_133.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_134.nii.gz",
+            "label": "./labelsTr/PETCT_134.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_135.nii.gz",
+            "label": "./labelsTr/PETCT_135.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_137.nii.gz",
+            "label": "./labelsTr/PETCT_137.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_138.nii.gz",
+            "label": "./labelsTr/PETCT_138.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_139.nii.gz",
+            "label": "./labelsTr/PETCT_139.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_141.nii.gz",
+            "label": "./labelsTr/PETCT_141.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_142.nii.gz",
+            "label": "./labelsTr/PETCT_142.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_144.nii.gz",
+            "label": "./labelsTr/PETCT_144.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_146.nii.gz",
+            "label": "./labelsTr/PETCT_146.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_147.nii.gz",
+            "label": "./labelsTr/PETCT_147.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_149.nii.gz",
+            "label": "./labelsTr/PETCT_149.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_150.nii.gz",
+            "label": "./labelsTr/PETCT_150.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_151.nii.gz",
+            "label": "./labelsTr/PETCT_151.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_153.nii.gz",
+            "label": "./labelsTr/PETCT_153.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_154.nii.gz",
+            "label": "./labelsTr/PETCT_154.nii.gz"
+        },
+        {
+            "image": "./imagesTr/PETCT_155.nii.gz",
+            "label": "./labelsTr/PETCT_155.nii.gz"
+        }
+    ]
+}

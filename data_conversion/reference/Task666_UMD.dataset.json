@@ -1,0 +1,933 @@
+{
+    "description": "",
+    "labels": {
+        "0": "background",
+        "1": "uterine wall",
+        "2": "uterine cavity",
+        "3": "myoma",
+        "4": "nabothian cyst"
+    },
+    "licence": "hands off!",
+    "modality": {
+        "0": "T2",
+        "1": "zero"
+    },
+    "name": "Task511_UMD_ZeroChannel",
+    "numTest": 52,
+    "numTraining": 214,
+    "reference": "",
+    "release": "0.0",
+    "tensorImageSize": "4D",
+    "test": [
+        "./imagesTs/UMD_003.nii.gz",
+        "./imagesTs/UMD_009.nii.gz",
+        "./imagesTs/UMD_018.nii.gz",
+        "./imagesTs/UMD_019.nii.gz",
+        "./imagesTs/UMD_020.nii.gz",
+        "./imagesTs/UMD_021.nii.gz",
+        "./imagesTs/UMD_024.nii.gz",
+        "./imagesTs/UMD_029.nii.gz",
+        "./imagesTs/UMD_031.nii.gz",
+        "./imagesTs/UMD_049.nii.gz",
+        "./imagesTs/UMD_057.nii.gz",
+        "./imagesTs/UMD_073.nii.gz",
+        "./imagesTs/UMD_089.nii.gz",
+        "./imagesTs/UMD_095.nii.gz",
+        "./imagesTs/UMD_097.nii.gz",
+        "./imagesTs/UMD_100.nii.gz",
+        "./imagesTs/UMD_102.nii.gz",
+        "./imagesTs/UMD_103.nii.gz",
+        "./imagesTs/UMD_104.nii.gz",
+        "./imagesTs/UMD_105.nii.gz",
+        "./imagesTs/UMD_109.nii.gz",
+        "./imagesTs/UMD_115.nii.gz",
+        "./imagesTs/UMD_121.nii.gz",
+        "./imagesTs/UMD_128.nii.gz",
+        "./imagesTs/UMD_132.nii.gz",
+        "./imagesTs/UMD_137.nii.gz",
+        "./imagesTs/UMD_152.nii.gz",
+        "./imagesTs/UMD_154.nii.gz",
+        "./imagesTs/UMD_155.nii.gz",
+        "./imagesTs/UMD_158.nii.gz",
+        "./imagesTs/UMD_160.nii.gz",
+        "./imagesTs/UMD_170.nii.gz",
+        "./imagesTs/UMD_171.nii.gz",
+        "./imagesTs/UMD_177.nii.gz",
+        "./imagesTs/UMD_178.nii.gz",
+        "./imagesTs/UMD_190.nii.gz",
+        "./imagesTs/UMD_194.nii.gz",
+        "./imagesTs/UMD_201.nii.gz",
+        "./imagesTs/UMD_216.nii.gz",
+        "./imagesTs/UMD_217.nii.gz",
+        "./imagesTs/UMD_219.nii.gz",
+        "./imagesTs/UMD_224.nii.gz",
+        "./imagesTs/UMD_225.nii.gz",
+        "./imagesTs/UMD_233.nii.gz",
+        "./imagesTs/UMD_239.nii.gz",
+        "./imagesTs/UMD_258.nii.gz",
+        "./imagesTs/UMD_265.nii.gz",
+        "./imagesTs/UMD_270.nii.gz",
+        "./imagesTs/UMD_275.nii.gz",
+        "./imagesTs/UMD_277.nii.gz",
+        "./imagesTs/UMD_283.nii.gz",
+        "./imagesTs/UMD_290.nii.gz"
+    ],
+    "training": [
+        {
+            "image": "./imagesTr/UMD_001.nii.gz",
+            "label": "./labelsTr/UMD_001.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_002.nii.gz",
+            "label": "./labelsTr/UMD_002.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_004.nii.gz",
+            "label": "./labelsTr/UMD_004.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_005.nii.gz",
+            "label": "./labelsTr/UMD_005.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_006.nii.gz",
+            "label": "./labelsTr/UMD_006.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_007.nii.gz",
+            "label": "./labelsTr/UMD_007.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_008.nii.gz",
+            "label": "./labelsTr/UMD_008.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_010.nii.gz",
+            "label": "./labelsTr/UMD_010.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_011.nii.gz",
+            "label": "./labelsTr/UMD_011.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_012.nii.gz",
+            "label": "./labelsTr/UMD_012.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_013.nii.gz",
+            "label": "./labelsTr/UMD_013.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_014.nii.gz",
+            "label": "./labelsTr/UMD_014.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_015.nii.gz",
+            "label": "./labelsTr/UMD_015.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_016.nii.gz",
+            "label": "./labelsTr/UMD_016.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_017.nii.gz",
+            "label": "./labelsTr/UMD_017.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_022.nii.gz",
+            "label": "./labelsTr/UMD_022.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_023.nii.gz",
+            "label": "./labelsTr/UMD_023.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_025.nii.gz",
+            "label": "./labelsTr/UMD_025.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_026.nii.gz",
+            "label": "./labelsTr/UMD_026.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_027.nii.gz",
+            "label": "./labelsTr/UMD_027.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_028.nii.gz",
+            "label": "./labelsTr/UMD_028.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_030.nii.gz",
+            "label": "./labelsTr/UMD_030.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_032.nii.gz",
+            "label": "./labelsTr/UMD_032.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_033.nii.gz",
+            "label": "./labelsTr/UMD_033.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_034.nii.gz",
+            "label": "./labelsTr/UMD_034.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_035.nii.gz",
+            "label": "./labelsTr/UMD_035.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_036.nii.gz",
+            "label": "./labelsTr/UMD_036.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_038.nii.gz",
+            "label": "./labelsTr/UMD_038.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_039.nii.gz",
+            "label": "./labelsTr/UMD_039.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_040.nii.gz",
+            "label": "./labelsTr/UMD_040.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_041.nii.gz",
+            "label": "./labelsTr/UMD_041.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_042.nii.gz",
+            "label": "./labelsTr/UMD_042.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_043.nii.gz",
+            "label": "./labelsTr/UMD_043.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_044.nii.gz",
+            "label": "./labelsTr/UMD_044.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_047.nii.gz",
+            "label": "./labelsTr/UMD_047.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_048.nii.gz",
+            "label": "./labelsTr/UMD_048.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_051.nii.gz",
+            "label": "./labelsTr/UMD_051.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_052.nii.gz",
+            "label": "./labelsTr/UMD_052.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_053.nii.gz",
+            "label": "./labelsTr/UMD_053.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_056.nii.gz",
+            "label": "./labelsTr/UMD_056.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_058.nii.gz",
+            "label": "./labelsTr/UMD_058.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_065.nii.gz",
+            "label": "./labelsTr/UMD_065.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_066.nii.gz",
+            "label": "./labelsTr/UMD_066.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_067.nii.gz",
+            "label": "./labelsTr/UMD_067.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_068.nii.gz",
+            "label": "./labelsTr/UMD_068.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_069.nii.gz",
+            "label": "./labelsTr/UMD_069.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_072.nii.gz",
+            "label": "./labelsTr/UMD_072.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_075.nii.gz",
+            "label": "./labelsTr/UMD_075.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_077.nii.gz",
+            "label": "./labelsTr/UMD_077.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_078.nii.gz",
+            "label": "./labelsTr/UMD_078.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_080.nii.gz",
+            "label": "./labelsTr/UMD_080.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_081.nii.gz",
+            "label": "./labelsTr/UMD_081.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_082.nii.gz",
+            "label": "./labelsTr/UMD_082.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_083.nii.gz",
+            "label": "./labelsTr/UMD_083.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_084.nii.gz",
+            "label": "./labelsTr/UMD_084.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_087.nii.gz",
+            "label": "./labelsTr/UMD_087.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_091.nii.gz",
+            "label": "./labelsTr/UMD_091.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_092.nii.gz",
+            "label": "./labelsTr/UMD_092.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_093.nii.gz",
+            "label": "./labelsTr/UMD_093.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_094.nii.gz",
+            "label": "./labelsTr/UMD_094.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_096.nii.gz",
+            "label": "./labelsTr/UMD_096.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_098.nii.gz",
+            "label": "./labelsTr/UMD_098.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_099.nii.gz",
+            "label": "./labelsTr/UMD_099.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_101.nii.gz",
+            "label": "./labelsTr/UMD_101.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_107.nii.gz",
+            "label": "./labelsTr/UMD_107.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_108.nii.gz",
+            "label": "./labelsTr/UMD_108.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_110.nii.gz",
+            "label": "./labelsTr/UMD_110.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_111.nii.gz",
+            "label": "./labelsTr/UMD_111.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_112.nii.gz",
+            "label": "./labelsTr/UMD_112.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_114.nii.gz",
+            "label": "./labelsTr/UMD_114.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_116.nii.gz",
+            "label": "./labelsTr/UMD_116.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_117.nii.gz",
+            "label": "./labelsTr/UMD_117.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_118.nii.gz",
+            "label": "./labelsTr/UMD_118.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_119.nii.gz",
+            "label": "./labelsTr/UMD_119.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_120.nii.gz",
+            "label": "./labelsTr/UMD_120.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_122.nii.gz",
+            "label": "./labelsTr/UMD_122.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_123.nii.gz",
+            "label": "./labelsTr/UMD_123.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_124.nii.gz",
+            "label": "./labelsTr/UMD_124.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_125.nii.gz",
+            "label": "./labelsTr/UMD_125.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_126.nii.gz",
+            "label": "./labelsTr/UMD_126.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_129.nii.gz",
+            "label": "./labelsTr/UMD_129.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_131.nii.gz",
+            "label": "./labelsTr/UMD_131.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_133.nii.gz",
+            "label": "./labelsTr/UMD_133.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_134.nii.gz",
+            "label": "./labelsTr/UMD_134.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_135.nii.gz",
+            "label": "./labelsTr/UMD_135.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_136.nii.gz",
+            "label": "./labelsTr/UMD_136.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_138.nii.gz",
+            "label": "./labelsTr/UMD_138.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_140.nii.gz",
+            "label": "./labelsTr/UMD_140.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_141.nii.gz",
+            "label": "./labelsTr/UMD_141.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_142.nii.gz",
+            "label": "./labelsTr/UMD_142.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_143.nii.gz",
+            "label": "./labelsTr/UMD_143.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_144.nii.gz",
+            "label": "./labelsTr/UMD_144.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_145.nii.gz",
+            "label": "./labelsTr/UMD_145.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_146.nii.gz",
+            "label": "./labelsTr/UMD_146.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_147.nii.gz",
+            "label": "./labelsTr/UMD_147.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_148.nii.gz",
+            "label": "./labelsTr/UMD_148.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_149.nii.gz",
+            "label": "./labelsTr/UMD_149.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_150.nii.gz",
+            "label": "./labelsTr/UMD_150.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_151.nii.gz",
+            "label": "./labelsTr/UMD_151.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_153.nii.gz",
+            "label": "./labelsTr/UMD_153.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_159.nii.gz",
+            "label": "./labelsTr/UMD_159.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_161.nii.gz",
+            "label": "./labelsTr/UMD_161.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_162.nii.gz",
+            "label": "./labelsTr/UMD_162.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_163.nii.gz",
+            "label": "./labelsTr/UMD_163.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_165.nii.gz",
+            "label": "./labelsTr/UMD_165.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_166.nii.gz",
+            "label": "./labelsTr/UMD_166.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_167.nii.gz",
+            "label": "./labelsTr/UMD_167.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_168.nii.gz",
+            "label": "./labelsTr/UMD_168.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_169.nii.gz",
+            "label": "./labelsTr/UMD_169.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_172.nii.gz",
+            "label": "./labelsTr/UMD_172.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_173.nii.gz",
+            "label": "./labelsTr/UMD_173.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_174.nii.gz",
+            "label": "./labelsTr/UMD_174.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_175.nii.gz",
+            "label": "./labelsTr/UMD_175.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_176.nii.gz",
+            "label": "./labelsTr/UMD_176.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_179.nii.gz",
+            "label": "./labelsTr/UMD_179.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_180.nii.gz",
+            "label": "./labelsTr/UMD_180.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_181.nii.gz",
+            "label": "./labelsTr/UMD_181.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_182.nii.gz",
+            "label": "./labelsTr/UMD_182.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_183.nii.gz",
+            "label": "./labelsTr/UMD_183.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_184.nii.gz",
+            "label": "./labelsTr/UMD_184.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_185.nii.gz",
+            "label": "./labelsTr/UMD_185.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_186.nii.gz",
+            "label": "./labelsTr/UMD_186.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_187.nii.gz",
+            "label": "./labelsTr/UMD_187.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_188.nii.gz",
+            "label": "./labelsTr/UMD_188.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_189.nii.gz",
+            "label": "./labelsTr/UMD_189.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_191.nii.gz",
+            "label": "./labelsTr/UMD_191.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_192.nii.gz",
+            "label": "./labelsTr/UMD_192.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_193.nii.gz",
+            "label": "./labelsTr/UMD_193.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_196.nii.gz",
+            "label": "./labelsTr/UMD_196.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_197.nii.gz",
+            "label": "./labelsTr/UMD_197.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_198.nii.gz",
+            "label": "./labelsTr/UMD_198.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_199.nii.gz",
+            "label": "./labelsTr/UMD_199.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_202.nii.gz",
+            "label": "./labelsTr/UMD_202.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_203.nii.gz",
+            "label": "./labelsTr/UMD_203.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_204.nii.gz",
+            "label": "./labelsTr/UMD_204.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_205.nii.gz",
+            "label": "./labelsTr/UMD_205.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_206.nii.gz",
+            "label": "./labelsTr/UMD_206.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_207.nii.gz",
+            "label": "./labelsTr/UMD_207.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_208.nii.gz",
+            "label": "./labelsTr/UMD_208.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_209.nii.gz",
+            "label": "./labelsTr/UMD_209.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_210.nii.gz",
+            "label": "./labelsTr/UMD_210.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_211.nii.gz",
+            "label": "./labelsTr/UMD_211.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_212.nii.gz",
+            "label": "./labelsTr/UMD_212.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_213.nii.gz",
+            "label": "./labelsTr/UMD_213.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_214.nii.gz",
+            "label": "./labelsTr/UMD_214.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_215.nii.gz",
+            "label": "./labelsTr/UMD_215.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_218.nii.gz",
+            "label": "./labelsTr/UMD_218.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_220.nii.gz",
+            "label": "./labelsTr/UMD_220.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_221.nii.gz",
+            "label": "./labelsTr/UMD_221.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_223.nii.gz",
+            "label": "./labelsTr/UMD_223.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_226.nii.gz",
+            "label": "./labelsTr/UMD_226.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_227.nii.gz",
+            "label": "./labelsTr/UMD_227.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_228.nii.gz",
+            "label": "./labelsTr/UMD_228.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_229.nii.gz",
+            "label": "./labelsTr/UMD_229.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_230.nii.gz",
+            "label": "./labelsTr/UMD_230.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_231.nii.gz",
+            "label": "./labelsTr/UMD_231.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_232.nii.gz",
+            "label": "./labelsTr/UMD_232.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_234.nii.gz",
+            "label": "./labelsTr/UMD_234.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_235.nii.gz",
+            "label": "./labelsTr/UMD_235.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_236.nii.gz",
+            "label": "./labelsTr/UMD_236.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_237.nii.gz",
+            "label": "./labelsTr/UMD_237.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_238.nii.gz",
+            "label": "./labelsTr/UMD_238.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_240.nii.gz",
+            "label": "./labelsTr/UMD_240.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_242.nii.gz",
+            "label": "./labelsTr/UMD_242.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_243.nii.gz",
+            "label": "./labelsTr/UMD_243.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_244.nii.gz",
+            "label": "./labelsTr/UMD_244.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_245.nii.gz",
+            "label": "./labelsTr/UMD_245.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_246.nii.gz",
+            "label": "./labelsTr/UMD_246.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_247.nii.gz",
+            "label": "./labelsTr/UMD_247.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_248.nii.gz",
+            "label": "./labelsTr/UMD_248.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_250.nii.gz",
+            "label": "./labelsTr/UMD_250.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_251.nii.gz",
+            "label": "./labelsTr/UMD_251.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_252.nii.gz",
+            "label": "./labelsTr/UMD_252.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_253.nii.gz",
+            "label": "./labelsTr/UMD_253.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_254.nii.gz",
+            "label": "./labelsTr/UMD_254.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_255.nii.gz",
+            "label": "./labelsTr/UMD_255.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_256.nii.gz",
+            "label": "./labelsTr/UMD_256.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_257.nii.gz",
+            "label": "./labelsTr/UMD_257.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_259.nii.gz",
+            "label": "./labelsTr/UMD_259.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_260.nii.gz",
+            "label": "./labelsTr/UMD_260.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_261.nii.gz",
+            "label": "./labelsTr/UMD_261.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_262.nii.gz",
+            "label": "./labelsTr/UMD_262.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_263.nii.gz",
+            "label": "./labelsTr/UMD_263.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_264.nii.gz",
+            "label": "./labelsTr/UMD_264.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_266.nii.gz",
+            "label": "./labelsTr/UMD_266.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_267.nii.gz",
+            "label": "./labelsTr/UMD_267.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_268.nii.gz",
+            "label": "./labelsTr/UMD_268.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_269.nii.gz",
+            "label": "./labelsTr/UMD_269.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_271.nii.gz",
+            "label": "./labelsTr/UMD_271.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_272.nii.gz",
+            "label": "./labelsTr/UMD_272.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_273.nii.gz",
+            "label": "./labelsTr/UMD_273.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_274.nii.gz",
+            "label": "./labelsTr/UMD_274.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_276.nii.gz",
+            "label": "./labelsTr/UMD_276.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_278.nii.gz",
+            "label": "./labelsTr/UMD_278.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_279.nii.gz",
+            "label": "./labelsTr/UMD_279.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_280.nii.gz",
+            "label": "./labelsTr/UMD_280.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_281.nii.gz",
+            "label": "./labelsTr/UMD_281.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_282.nii.gz",
+            "label": "./labelsTr/UMD_282.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_284.nii.gz",
+            "label": "./labelsTr/UMD_284.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_285.nii.gz",
+            "label": "./labelsTr/UMD_285.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_286.nii.gz",
+            "label": "./labelsTr/UMD_286.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_287.nii.gz",
+            "label": "./labelsTr/UMD_287.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_288.nii.gz",
+            "label": "./labelsTr/UMD_288.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_289.nii.gz",
+            "label": "./labelsTr/UMD_289.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_291.nii.gz",
+            "label": "./labelsTr/UMD_291.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_292.nii.gz",
+            "label": "./labelsTr/UMD_292.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_293.nii.gz",
+            "label": "./labelsTr/UMD_293.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_294.nii.gz",
+            "label": "./labelsTr/UMD_294.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_295.nii.gz",
+            "label": "./labelsTr/UMD_295.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_296.nii.gz",
+            "label": "./labelsTr/UMD_296.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_297.nii.gz",
+            "label": "./labelsTr/UMD_297.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_298.nii.gz",
+            "label": "./labelsTr/UMD_298.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_299.nii.gz",
+            "label": "./labelsTr/UMD_299.nii.gz"
+        },
+        {
+            "image": "./imagesTr/UMD_300.nii.gz",
+            "label": "./labelsTr/UMD_300.nii.gz"
+        }
+    ]
+}

@@ -20,7 +20,8 @@ block-specific learning rates calibrated from initial relative gradient norms,
 and a registry that defines every experiment in the paper.
 
 The repository contains **no medical images, patient identifiers, model
-checkpoints, or per-patient predictions**.
+checkpoints, or per-patient predictions**; trained models are on Hugging Face
+(see [Checkpoints and evaluations](#checkpoints-and-evaluations)).
 
 ## Notation
 
@@ -47,7 +48,11 @@ source reproducibility/config.example.env   # set PAPER_DATA_ROOT first to use e
 ```
 
 Data are the public UMD, ECPC-IDS, and UT-EndoMRI datasets, converted to the
-nnU-Net v1 raw-data layout with two input channels (see
+nnU-Net v1 raw-data layout with two input channels. The scripts in
+[`data_conversion/`](data_conversion/) turn the public downloads into exactly
+these task folders and verify the result against fingerprints of the data
+used in the paper (UMD and UT-EndoMRI are reproduced byte for byte, ECPC-IDS
+near-exactly; see [`data_conversion/README.md`](data_conversion/README.md) and
 [`docs/DATA.md`](docs/DATA.md)). Validate, then preprocess:
 
 ```bash
@@ -59,6 +64,33 @@ All controlled runs start from the same UMD checkpoint, given by
 `PAPER_INIT_CHECKPOINT`; its held-out UMD evaluation (`PAPER_BASELINE_UMD_EVAL`)
 is the reference for forgetting. Both are set in
 [`reproducibility/config.example.env`](reproducibility/config.example.env).
+
+## Checkpoints and evaluations
+
+The trained models and held-out evaluations are on Hugging Face:
+
+| Repository | Contents |
+|---|---|
+| [AmalSaqib/What-to-Preserve-Where-to-Adapt](https://huggingface.co/AmalSaqib/What-to-Preserve-Where-to-Adapt) | The UMD Task-1 model and all 38 runs reported in the paper (every seed), with their evaluations |
+| [AmalSaqib/Continual-Gyne-Segmentation-Thesis](https://huggingface.co/AmalSaqib/Continual-Gyne-Segmentation-Thesis) | Further models: single-task nnU-Net baselines, continual-learning baselines (sequential, rehearsal, LwF, EWC), MultiTalent, and diagnostic runs |
+
+The paper repository mirrors `RESULTS_FOLDER` and `EVALUATION_FOLDER`, so the
+tables can be rebuilt without data or a GPU:
+
+```bash
+hf download AmalSaqib/What-to-Preserve-Where-to-Adapt --local-dir hf
+export RESULTS_FOLDER=$PWD/hf/results EVALUATION_FOLDER=$PWD/hf/evaluation
+SEQ=nnUNet_ext/3d_fullres/Task666_UMD_Task555_ECPC_Task778_EndoMRI_T1FS/Task666_UMD/nnUNetTrainerSequential__nnUNetPlansv2.1/Generic_UNet/SEQ
+export PAPER_INIT_CHECKPOINT=$RESULTS_FOLDER/$SEQ/fold_0
+export PAPER_BASELINE_UMD_EVAL=$EVALUATION_FOLDER/$SEQ/head_Task666_UMD/fold_0/Task666_UMD/val_metrics_eval.json
+python reproducibility/summarize_questions.py
+```
+
+The output matches [`reproducibility/reported/`](reproducibility/reported/)
+exactly. To retrain from the released Task-1 model, point
+`PAPER_INIT_CHECKPOINT` at the downloaded `fold_0` folder above. The weights
+are released under CC BY-NC 4.0 for non-commercial research use, following
+the terms of the training datasets.
 
 ## Reproducing the three questions
 
